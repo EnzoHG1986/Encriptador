@@ -2,6 +2,11 @@ const textArea = document.querySelector(".text-area")
 const mensaje = document.querySelector(".mensaje")
 
 function btnEncriptar(){
+    const texto = textArea.value;
+    if (/[\u0300-\u036f\u00c0-\u017f]/.test(texto) || texto !== texto.toLowerCase()) {
+        alert("El texto no puede contener acentos o letras mayúsculas.");
+        return;
+    }
     const textoEncriptado = encriptar(textArea.value)
     mensaje.value = textoEncriptado 
     textArea.value = "";
